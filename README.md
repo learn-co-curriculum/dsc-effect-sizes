@@ -1,16 +1,4 @@
 
-
-```python
-pwd
-```
-
-
-
-
-    'C:\\Users\\medio\\Desktop\\work\\to-modify\\ds-stats-effect_size'
-
-
-
 # Effect Size 
 
 ### SWBATs
@@ -187,7 +175,7 @@ pyplot.xlabel('height (cm)')
 
 
 
-![png](output_16_1.png)
+![png](output_15_1.png)
 
 
 Let's assume for the sake of simplicity that these are the true distributions for the population. As you studied earlier, in real life we never observe the true population distribution.  We generally have to work with a random sample. Let's try to work out how different these two groups are with respect to height by calculating un-standardized and standardized effect sizes.
@@ -611,7 +599,7 @@ plot_pdfs(5)
     
 
 
-![png](output_61_1.png)
+![png](output_60_1.png)
 
 
 Cohen's $d$ has a few nice properties:
