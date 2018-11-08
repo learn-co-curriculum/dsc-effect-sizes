@@ -1,7 +1,11 @@
 
 # Effect Size 
 
-### SWBATs
+## Introduction
+
+When comparing results between groups, and results proof to be different, it is important to understand what the size of the difference is. You'll learn about that here!
+
+## Objectives
 
 * Illustrate a clear understanding of the terms "Effect" and "Effect Size" in a statistical context.
 * Compare and contrast p-value and effect size for identifying significance of results.
@@ -10,16 +14,15 @@
 * Calculate standardized effect size using Cohen's d statistic
 * Visualize and Interpret the $d$ value as size of effect
 
+## Introduction to Effect Size
 
-### Introduction to Effect Size
-
-'Effect size' is used to quantify the *size of the difference* between two groups under observation. Effect sizes are easy to calculate, understand and apply to any measured outcome and is this approach is applicable to a multitude of study domains. It is highly valuable towards quantifying the *effectiveness of a particular intervention, relative to some comparison*. Measuring effect size allows scientists to go beyond the obvious and simplistic, *'Does it work or not?'* to the far more sophisticated, *'How well does it work in a range of contexts?'*. 
+Effect size' is used to quantify the *size of the difference* between two groups under observation. Effect sizes are easy to calculate, understand and apply to any measured outcome and is applicable to a multitude of study domains. It is highly valuable towards quantifying the *effectiveness of a particular intervention, relative to some comparison*. Measuring effect size allows scientists to go beyond the obvious and simplistic, *'Does it work or not?'* to the far more sophisticated, *'How well does it work in a range of contexts?'*. 
 
 [More on effect size](https://www.slideshare.net/gaetanlion/effect-size-presentation)
 
 
 
-#### P-value vs. Effect Size
+### P-value vs. Effect Size
 
 Effect size measurement places its emphasis on the effect size only, unlike statistical significance which combines effect size and sample size, thus promoting a more scientific approach towards knowledge accumulation. Effect size is therefore routinely used towards **Meta-Analysis** i.e. for combining and comparing estimates from different studies conducted on different samples. 
 
@@ -36,7 +39,7 @@ In light of this, it is possible to achieve highly significant p-values for effe
 
 [Further details on p-value vs. effect size calculation](http://www.win-vector.com/blog/2017/09/remember-p-values-are-not-effect-sizes/)
 
-### Why do data scientists need to know about 'Effect Size'?
+## Why do data scientists need to know about 'Effect Size'?
 
 Consider the experiment conducted by Dowson (2000) to investigate time of day effects on children learning: do children learn better in the morning or afternoon? A group of 38 children were included in the experiment. Half were randomly allocated to listen to a story and answer questions about it at 9am, the other half to hear exactly the same story and answer the same questions at 3pm. Their comprehension was measured by the number of questions answered correctly out of 20.
 
@@ -105,7 +108,7 @@ male_height
 
 
 
-    <scipy.stats._distn_infrastructure.rv_frozen at 0x242c81eecf8>
+    <scipy.stats._distn_infrastructure.rv_frozen at 0x111793dd8>
 
 
 
@@ -118,7 +121,7 @@ female_sd = 7.3
 female_height = scipy.stats.norm(female_mean, female_sd)
 ```
 
-###  Evaluate Probability Density Function (PDF)
+##  Evaluate Probability Density Function (PDF)
 
 A continuous random variable, as calculated above, takes on an uncountably infinite number of possible values. 
 
@@ -175,7 +178,7 @@ pyplot.xlabel('height (cm)')
 
 
 
-![png](output_15_1.png)
+![png](index_files/index_15_1.png)
 
 
 Let's assume for the sake of simplicity that these are the true distributions for the population. As you studied earlier, in real life we never observe the true population distribution.  We generally have to work with a random sample. Let's try to work out how different these two groups are with respect to height by calculating un-standardized and standardized effect sizes.
@@ -296,7 +299,7 @@ relative_difference * 100    # percent
 
 
 
-### Overlap threshold
+## Overlap threshold
 
 As you can see above, there is still difference in results when we express the relative difference, relative to male height and female height. Perhaps we can look for amount of overlap between the two distributions.  To define overlap, we choose a threshold between the two means.  The simple threshold is the midpoint between the means:
 
@@ -392,7 +395,7 @@ misclassification_rate
 
 
 
-### Probability of superiority (Non-parametric)
+## Probability of superiority (Non-parametric)
 
 Another "non-parametric" way to quantify the difference between distributions is what's called **"probability of superiority"**, which is the probability that *"a randomly-chosen man is taller than a randomly-chosen woman"*, which makes perfect sense.
 
@@ -479,7 +482,7 @@ overlap_superiority(male_height, female_height, n=1000)
 ```
 
     170.5
-    
+
 
 
 
@@ -488,7 +491,7 @@ overlap_superiority(male_height, female_height, n=1000)
 
 
 
-### Standardized effect size
+## Standardized effect size
 
 When analysts generally talk about effect sizes, they refer to some method of calculating a *standadized* effect size. The standardized effect size statistic would divide effect size by some standardizer i.e. standard deviation :
 
@@ -496,7 +499,7 @@ When analysts generally talk about effect sizes, they refer to some method of ca
 
 When interpreting, this statistic would be in terms of standard deviations e.g. The mean height of males in USA is 1.4 standard deviations higher than mean female heights etc.The effect size measure we will be learning about in this lesson is Cohen’s d. This measure expresses the size of an effect as a number standard deviations, similar to a z-score in statistics.
 
-### Cohen's $d$
+## Cohen's $d$
 
 Cohen’s D is one of the most common ways to measure effect size.  As an effect size, Cohen's d is typically used to represent the magnitude of differences between two (or more) groups on a given variable, with larger values representing a greater differentiation between the two groups on that variable. 
 
@@ -552,7 +555,7 @@ Cohen_d(male_sample, female_sample)
 
 
 
-### Interpreting $d$
+## Interpreting $d$
 Most people don't have a good sense of how big $d=2.0$ is. If you are having trouble visualizing what the result of Cohen’s D means, use these general “rule of thumb” guidelines (which Cohen said should be used cautiously):
 
 >**Small effect = 0.2**
@@ -596,10 +599,10 @@ plot_pdfs(5)
     2.5
     overlap 1.992
     superiority 0.0
-    
 
 
-![png](output_60_1.png)
+
+![png](index_files/index_60_1.png)
 
 
 Cohen's $d$ has a few nice properties:
@@ -610,6 +613,6 @@ Cohen's $d$ has a few nice properties:
 
 * Given $d$ (and the assumption that the distributions are normal), you can compute overlap, superiority, and related statistics.
 
-## Summary and Conclusion
+## Summary
 
 In this lesson, we highlighted the importance of calculating and interpreting effect size in Python as a measure of observing real world difference between two groups. You learnt about simple (unstandardized) effect size calculation as difference of means, as well as standardization of this calculation with standard deviation as a standardizer. You also learnt what is Cohen's d statistic and how to use it for pratical purposes. The best way to report effect size often depends on the audience, goals and subjects of study.  There is often a tradeoff between summary statistics that have good technical properties and statistics that are meaningful to a general audience.
