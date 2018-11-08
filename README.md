@@ -7,8 +7,8 @@ When comparing results between groups, and results proof to be different, it is 
 
 ## Objectives
 
-* Illustrate a clear understanding of the terms "Effect" and "Effect Size" in a statistical context.
-* Compare and contrast p-value and effect size for identifying significance of results.
+* Illustrate a clear understanding of the terms "Effect" and "Effect Size" in a statistical context
+* Compare and contrast p-value and effect size for identifying significance of results
 * Calculate simple (unstandardized) effect size using Python and SciPy
 * Interpret results of simple effect size and identify shortcomings of this approach
 * Calculate standardized effect size using Cohen's d statistic
