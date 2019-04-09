@@ -41,20 +41,20 @@ In light of this, it is possible to achieve highly significant p-values for effe
 
 ## Why do data scientists need to know about 'Effect Size'?
 
-Consider the experiment conducted by Dowson (2000) to investigate time of day effects on children learning: do children learn better in the morning or afternoon? A group of 38 children were included in the experiment. Half were randomly allocated to listen to a story and answer questions about it at 9am, the other half heard exactly the same story and had to answer the same questions at 3pm. Their comprehension was measured by the number of questions answered correctly out of 20.
+Consider the experiment conducted by Dowson (2000) to investigate time of day effects on children learning: do children learn better in the morning or afternoon? A group of 38 children was included in the experiment. Half were randomly allocated to listen to a story and answer questions about it at 9am, the other half heard exactly the same story and had to answer the same questions at 3pm. Their comprehension was measured by the number of questions answered correctly out of 20.
 
 The average score was 15.2 for the morning group and 17.9 for the afternoon group, giving a difference of 2.7. 
 **How big a difference is this? **
 
-If the results were measured on a standard scale, such as a 4 point GPA scale, interpreting the difference would not be a problem. If the average difference was, say, half a grade or a full grade, most people would have a fair idea of the educational significance of the effect of reading a story at different times of day. However, in many experiments there is no familiar scale available on which to record the outcomes i.e. student comprehension in this case. The experimenter often has to invent a scale or to use (or adapt) an already existing one - but generally most people would be unfimilar with interpretation of this scaler.
+If the results were measured on a standard scale, such as a 4 point GPA scale, interpreting the difference would not be a problem. If the average difference was, say, half a grade or a full grade, most people would have a fair idea of the educational significance of the effect of reading a story at different times of the day. However, in many experiments, there is no familiar scale available on which to record the outcomes i.e. student comprehension in this case. The experimenter often has to invent a scale or use (or adapt) an already existing one - but generally, most people would be unfamiliar with the interpretation of this scaler.
 
-In data analytics domain, effect size calculation serves three primary goals:
+In a data analytics domain, effect size calculation serves three primary goals:
 
-* Communicate **practical significance** of results. An effect might be statistically significant, but does it matter in practical scenarios ?
+* Communicate **practical significance** of results. An effect might be statistically significant, but does it matter in practical scenarios?
 
 * Effect size calculation and interpretation allows you to draw **Meta-Analytical** conclusions. This allows you to group together a number of existing studies, calculate the meta-analytic effect size and get the best estimate of the tur effect size of the population. 
 
-* Perform **Power Analysis** , which help determine the number of particicpants (sample size) that a study requires to achieve a certain probability of finding a true effect - if there is one. 
+* Perform **Power Analysis**, which help determine the number of participants (sample size) that a study requires to achieve a certain probability of finding a true effect - if there is one. 
 
 
 ## Calculating effect size in Python 
@@ -108,7 +108,7 @@ male_height
 
 
 
-    <scipy.stats._distn_infrastructure.rv_frozen at 0x106d04630>
+    <scipy.stats._distn_infrastructure.rv_frozen at 0x10a8085f8>
 
 
 
@@ -125,7 +125,7 @@ female_height = scipy.stats.norm(female_mean, female_sd)
 
 A continuous random variable, as calculated above, takes on an uncountably infinite number of possible values. 
 
-For a **discrete** random variable X that takes on a finite or infinite number of possible values, we determine P(X = x) for all of the possible values of X, and call it the probability mass function (PMF). 
+For a **discrete** random variable X that takes on a finite or infinite number of possible values, we determine P(X = x) for all of the possible values of X and call it the probability mass function (PMF). 
 
 For **continuous** random variables, as in the case of heights, the probability that X takes on any particular value x is 0. That is, finding P(X = x) for a continuous random variable X is not going to work. Instead, you'll need to find the probability that X falls in some interval (a, b) i.e. you'll need to find **P(a < X < b)** using a **probability density function(PDF)**. 
 
@@ -152,7 +152,7 @@ def evaluate_PDF(rv, x=4):
     return xs, ys # Return calculated values
 ```
 
-Let's use the function above to caculate xs and ys for male and female heights (pass the `rv` object as an argument) and plot the resulting xs and ys for both distributions to visualise the effect size.**  
+Let's use the function above to calculate xs and ys for male and female heights (pass the `rv` object as an argument) and plot the resulting xs and ys for both distributions to visualize the effect size.**  
 
 
 ```python
@@ -187,7 +187,7 @@ Let's assume for the sake of simplicity that these are the true distributions fo
 
 An unstandardized effect size simply tries to find the difference between two groups by calculating the difference between distribution means. Here is how you can do it in python. 
 
-You can use the `rvs` method from `scipy.stats` to generate random sample of size 1000 from the population distributions.  Note that these are totally random and representative samples, with no measurement error.
+You can use the `rvs` method from `scipy.stats` to generate a random sample of size 1000 from the population distributions.  Note that these are totally random and representative samples, with no measurement error.
 
 
 Visit [this link](https://docs.scipy.org/doc/scipy-1.0.0/reference/tutorial/stats.html) for more details on `sciPy.stats`. 
@@ -197,7 +197,7 @@ Visit [this link](https://docs.scipy.org/doc/scipy-1.0.0/reference/tutorial/stat
 male_sample = male_height.rvs(1000)
 ```
 
-The resulting samples are numPy arrays, so we can now easily calculate mean and sd of random samples. 
+The resulting samples are numPy arrays, so we can now easily calculate the mean and sd of random samples. 
 
 
 ```python
@@ -261,7 +261,7 @@ This shows that on average, men are around 15 centimeters taller. For some appli
 There are a number of ways to quantify the difference between distributions.  A simple option is to express the difference as a percentage of the mean.
 
 
-Let's figure out what is the relative difference in means of two populations, scaled by mean of male heights and  expressed as a percentage. 
+Let's figure out the relative difference in the means of two populations, scaled by the mean of male heights and  expressed as a percentage. 
 
 
 ```python
@@ -297,7 +297,7 @@ relative_difference * 100    # percent
 
 ## Overlap threshold
 
-As you can see above, there is still a difference in results when you express the relative difference, depending on whether we choose to represent the ratio relative to male height or female height. Perhaps you can look for amount of overlap between the two distributions.  To define overlap, you choose a threshold between the two means.  The simple threshold is the midpoint between the means:
+As you can see above, there is still a difference in results when you express the relative difference, depending on whether we choose to represent the ratio relative to male height or female height. Perhaps you can look for the amount of overlap between the two distributions.  To define overlap, you choose a threshold between the two means.  The simple threshold is the midpoint between the means:
 
 
 ```python
@@ -343,7 +343,7 @@ male_below_thresh
 
 
 
-Simiularly, we can calculate how many women are above calculated threshold
+Similarly, you can calculate how many women are above the calculated threshold
 
 
 ```python
@@ -358,7 +358,7 @@ female_above_thresh
 
 
 
-Now, take a look at the what these thresholds look like when laid over the Probability Density Functions of both samples' distributions.
+Now, take a look at what these thresholds look like when laid over the Probability Density Functions of both samples' distributions.
 
 
 ```python
@@ -439,11 +439,10 @@ sum(x > y for x, y in zip(male_sample, female_sample)) / len(male_sample)
 
 
 
-> Question: If we choose a female and a male sample at random, what is the probability that female are smaller than males in height? Is it different/same as above? **
+> Question: If we choose a female and a male sample at random, what is the probability that females are smaller than males in height? Is it different/same as above? **
 
 
 ```python
-# Solution
 sum(x < y for x, y in zip(female_sample, male_sample)) / len(female_sample)
 ```
 
@@ -454,7 +453,7 @@ sum(x < y for x, y in zip(female_sample, male_sample)) / len(female_sample)
 
 
 
-Overlap (or misclassification rate) as shown above, and "probability of superiority" have two good properties:
+Overlap (or misclassification rate) as shown above and "probability of superiority" have two good properties:
 
 * As probabilities, they don't depend on units of measure, so they are comparable between studies.
 
@@ -571,7 +570,7 @@ def Cohen_d(group1, group2):
     return d
 ```
 
-Computing the denominator is a little complicated; in fact, people have proposed several ways to do it.  [Here](https://scientificallysound.org/2017/07/13/cohens-d-standardiser/) is a brief description on using standardisers while calculating Cohen's $d$ for standard effect sizes.  
+Computing the denominator is a little complicated; in fact, people have proposed several ways to do it.  [Here](https://scientificallysound.org/2017/07/13/cohens-d-standardiser/) is a brief description of using standardisers while calculating Cohen's $d$ for standard effect sizes.  
 
 This implementation uses the "pooled standard deviation," which is a weighted average of the standard deviations of the two groups.
 
@@ -598,7 +597,7 @@ Most people don't have a good sense of how big $d=2.0$ is. If you are having tro
 
 >**Large Effect = 0.8**
 
-Here is as excellent online visualisation tool developed by [Kristoffer Magnusson](https://rpsychologist.com/d3/cohend/) to help interpret the results of cohen's $d$ statistic. 
+Here is an excellent online visualization tool developed by [Kristoffer Magnusson](https://rpsychologist.com/d3/cohend/) to help interpret the results of cohen's $d$ statistic. 
 
 Following function that takes Cohen's $d$, plots normal distributions with the given effect size, and prints their overlap and superiority.
 
@@ -649,4 +648,4 @@ Cohen's $d$ has a few nice properties:
 
 ## Summary
 
-In this lesson, we highlighted the importance of calculating and interpreting effect size in Python as a measure of observing real world difference between two groups. You learnt about simple (unstandardized) effect size calculation as difference of means, as well as standardization of this calculation with standard deviation as a standardizer. You also learnt what is Cohen's d statistic and how to use it for pratical purposes. The best way to report effect size often depends on the audience, goals and subjects of study.  There is often a tradeoff between summary statistics that have good technical properties and statistics that are meaningful to a general audience.
+In this lesson, we highlighted the importance of calculating and interpreting effect size in Python as a measure of observing real world difference between two groups. You learned about simple (unstandardized) effect size calculation as difference of means, as well as standardization of this calculation with standard deviation as a standardizer. You also learned what is Cohen's d statistic and how to use it for practical purposes. The best way to report effect size often depends on the audience, goals, and subjects of study.  There is often a tradeoff between summary statistics that have good technical properties and statistics that are meaningful to a general audience.
