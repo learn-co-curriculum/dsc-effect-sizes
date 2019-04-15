@@ -8,10 +8,10 @@ When comparing results between groups, and results prove to be different, it is 
 ## Objectives
 
 * Illustrate a clear understanding of the terms "Effect" and "Effect Size" in a statistical context
-* Compare and contrast p-value and effect size for identifying significance of results
+* Compare and contrast p-value and effect size for identifying the significance of results
 * Calculate simple (unstandardized) effect size using Python and SciPy
-* Interpret results of simple effect size and identify shortcomings of this approach
-* Calculate standardized effect size using Cohen's d statistic
+* Interpret the results of simple effect size and identify shortcomings of this approach
+* Calculate the standardized effect size using Cohen's d statistic
 * Visualize and Interpret the $d$ value as size of effect
 
 ## Introduction to Effect Size
@@ -50,9 +50,9 @@ If the results were measured on a standard scale, such as a 4 point GPA scale, i
 
 In a data analytics domain, effect size calculation serves three primary goals:
 
-* Communicate **practical significance** of results. An effect might be statistically significant, but does it matter in practical scenarios?
+* Communicate the **practical significance** of results. An effect might be statistically significant, but does it matter in practical scenarios?
 
-* Effect size calculation and interpretation allows you to draw **Meta-Analytical** conclusions. This allows you to group together a number of existing studies, calculate the meta-analytic effect size and get the best estimate of the tur effect size of the population. 
+* Effect size calculation and interpretation allows you to draw **Meta-Analytical** conclusions. This allows you to group together a number of existing studies, calculate the meta-analytic effect size and get the best estimate of the effect size of the population. 
 
 * Perform **Power Analysis**, which help determine the number of participants (sample size) that a study requires to achieve a certain probability of finding a true effect - if there is one. 
 
@@ -75,7 +75,7 @@ import matplotlib.pyplot as plt
 
 %matplotlib inline
 
-# seed the random number generator so we all get the same results
+# seed the random number generator so you get the same results
 np.random.seed(10)
 ```
 
@@ -108,7 +108,7 @@ male_height
 
 
 
-    <scipy.stats._distn_infrastructure.rv_frozen at 0x10a8085f8>
+    <scipy.stats._distn_infrastructure.rv_frozen at 0x1145be550>
 
 
 
@@ -213,9 +213,9 @@ mean1, std1
 
 
 
-The sample mean is close to the population mean, but not exact, as expected.
+The sample mean is close to the population mean, but not exactly the same, as expected.
 
-Let's perform above calculation for female heights to calculate mean and sd of random samples from `female_height` `rv` object**
+Now, perform above calculation for female heights to calculate mean and sd of random samples from `female_height` `rv` object**
 
 
 ```python
@@ -386,7 +386,7 @@ plt.xlabel('height (cm)')
 ![png](index_files/index_33_1.png)
 
 
-The "overlap" (shaded region above) is the total **AUC (Area Under the Curves)**. We can use this to identify the sample that end up on the wrong side of the threshold. We can calculate the amount of overlap as shown below. 
+The "overlap" (shaded region above) is the total **AUC (Area Under the Curves)**. You can use this to identify the sample that end up on the wrong side of the threshold. You can calculate the amount of overlap as shown below. 
 
 
 ```python
@@ -421,7 +421,7 @@ misclassification_rate
 
 Another "non-parametric" way to quantify the difference between distributions is what's called **"probability of superiority"**, which is the probability that *"a randomly-chosen man is taller than a randomly-chosen woman"*, which makes perfect sense.
 
-> Question: If we choose a male and a female sample at random, what is the probability that males are taller than females? 
+> Question: If you chose a male and a female sample at random, what is the probability that males are taller than females? 
 
 
 ```python
@@ -439,7 +439,7 @@ sum(x > y for x, y in zip(male_sample, female_sample)) / len(male_sample)
 
 
 
-> Question: If we choose a female and a male sample at random, what is the probability that females are smaller than males in height? Is it different/same as above? **
+> Question: If you chose a female and a male sample at random, what is the probability that females are smaller than males in height? Is it different/same as above? **
 
 
 ```python
@@ -463,7 +463,7 @@ There is one other common way to express the difference between distributions (i
 
 
 
-Here's a function that encapsulates the code we have already seen for computing overlap and probability of superiority.
+Here's a function that encapsulates the code you have already seen for computing overlap and probability of superiority.
 
 
 ```python
@@ -570,7 +570,7 @@ def Cohen_d(group1, group2):
     return d
 ```
 
-Computing the denominator is a little complicated; in fact, people have proposed several ways to do it.  [Here](https://scientificallysound.org/2017/07/13/cohens-d-standardiser/) is a brief description of using standardisers while calculating Cohen's $d$ for standard effect sizes.  
+Computing the denominator is a little complicated; in fact, people have proposed several ways to do it.  [Here](https://scientificallysound.org/2017/07/13/cohens-d-standardiser/) is a brief description of using standardizers while calculating Cohen's $d$ for standardized effect sizes.  
 
 This implementation uses the "pooled standard deviation," which is a weighted average of the standard deviations of the two groups.
 
@@ -648,4 +648,4 @@ Cohen's $d$ has a few nice properties:
 
 ## Summary
 
-In this lesson, we highlighted the importance of calculating and interpreting effect size in Python as a measure of observing real world difference between two groups. You learned about simple (unstandardized) effect size calculation as difference of means, as well as standardization of this calculation with standard deviation as a standardizer. You also learned what is Cohen's d statistic and how to use it for practical purposes. The best way to report effect size often depends on the audience, goals, and subjects of study.  There is often a tradeoff between summary statistics that have good technical properties and statistics that are meaningful to a general audience.
+In this lesson, you highlighted the importance of calculating and interpreting effect size in Python as a measure of observing real world difference between two groups. You learned about simple (unstandardized) effect size calculation as the difference of means, as well as standardization of this calculation with standard deviation as a standardizer. You also learned what is Cohen's d statistic and how to use it for practical purposes. The best way to report effect size often depends on the audience, goals, and subjects of study.  There is often a tradeoff between summary statistics that have good technical properties and statistics that are meaningful to a general audience.
