@@ -7,12 +7,10 @@ When comparing results between groups, and results prove to be different, it is 
 
 ## Objectives
 
-* Illustrate a clear understanding of the terms "Effect" and "Effect Size" in a statistical context
 * Compare and contrast p-value and effect size for identifying the significance of results
-* Calculate simple (unstandardized) effect size using Python and SciPy
-* Interpret the results of simple effect size and identify shortcomings of this approach
-* Calculate the standardized effect size using Cohen's d statistic
-* Visualize and Interpret the d value as size of effect
+* Interpret the results of a simple effect size and identify shortcomings of this approach
+* Calculate and interpret standardized and unstandardized effect sizes
+* Create a visualization to demonstrate different effect sizes between distributions of data
 
 ## Introduction to Effect Size
 
